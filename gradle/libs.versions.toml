@@ -1,0 +1,32 @@
+[versions]
+agp = "8.13.0-alpha03"
+apollo = "5.0.0-alpha.1"
+apolloCache = "1.0.0-alpha.5"
+kotlin = "2.2.0"
+coreKtx = "1.16.0"
+lifecycleRuntimeKtx = "2.9.2"
+activityCompose = "1.10.1"
+composeBom = "2025.07.00"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+
+apollo-runtime = { module = "com.apollographql.apollo:apollo-runtime", version.ref = "apollo" }
+apollo-cache = { module = "com.apollographql.cache:normalized-cache", version.ref= "apolloCache" }
+apollo-sqlCache = { module = "com.apollographql.cache:normalized-cache-sqlite", version.ref= "apolloCache" }
+
+[bundles]
+apollo = ["apollo-runtime", "apollo-cache", "apollo-sqlCache"]
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+apollo = { id = "com.apollographql.apollo", version.ref = "apollo" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+

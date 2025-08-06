@@ -1,0 +1,17 @@
+query notifications($after: String) {
+    notifications(after: $after) {
+        edges {
+            node {
+                body
+                createdAt
+                id
+                title
+                read
+            }
+        }
+        pageInfo {
+            endCursor
+            hasNextPage
+        }
+    }
+}
