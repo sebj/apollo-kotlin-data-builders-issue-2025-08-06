@@ -1,3 +1,5 @@
+import com.apollographql.apollo.annotations.ApolloExperimental
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -55,8 +57,13 @@ apollo {
         addTypename.set("always")
         codegenModels = "responseBased"
         failOnWarnings = true
-        generateDataBuilders = true
+//        generateDataBuilders = true
         packageName = "com.example.myapplication.api"
+
+        @OptIn(ApolloExperimental::class)
+        plugin("com.apollographql.cache:normalized-cache-apollo-compiler-plugin:1.0.0-alpha.5") {
+            argument("com.apollographql.cache.packageName", packageName.get())
+        }
 
         dataBuildersOutputDirConnection {
             connectToKotlinSourceSet("main")
